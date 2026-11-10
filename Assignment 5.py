@@ -68,3 +68,25 @@ pp.legend()
 pp.grid(True)
 pp.show()
 
+#Part 3
+
+import datetime as dt
+
+#importing data
+data = np.loadtxt("fismflux20020824.dat", comments="#")
+
+#Extracting Info
+times = [ dt.datetime(int(row[0]),int(row[1]),int(row[2]),int(row[3]),int(row[4]),int(row[5]))
+         for row in data]
+
+#Getting the 56th bin
+bin56=data[:,61]
+
+#Plot stuff
+pp.plot(times,bin56)
+pp.xlabel("Time")
+pp.ylabel("EUV rad")
+pp.title("56th Spectrum")
+pp.gcf().autofmt_xdate()
+pp.grid()
+pp.show()
